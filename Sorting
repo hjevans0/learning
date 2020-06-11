@@ -1,0 +1,120 @@
+package com.company;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+	// write your code here
+        /*System.out.println("give integers, input nothing to run");
+        ArrayList<Integer> numberList = new ArrayList<>();
+        Scanner scan = new Scanner(System.in);
+        while (true){
+            String input = scan.nextLine();
+
+            if (input.equals("")){
+                break;
+            }
+
+            int number = Integer.valueOf(input);
+
+            numberList.add(number);
+        }
+        */
+
+        int[] numbers = {0, 5, 3, 1, 40, 3, 2};
+
+        /*numbers = bubbleSort(numbers);
+        for (int element: numbers){
+            System.out.println(element);
+        }
+        */
+        ArrayList<Integer> list = new ArrayList<>();
+        list.add(4);
+        list.add(7);
+        list.add(1);
+        list.add(3);
+        list.add(13);
+        list.add(2);
+        list.add(7);
+
+
+        list = quickSortOperation(list);
+
+        System.out.println(list);
+
+        list = quickSortOperation(list);
+
+        System.out.println(list);
+
+
+    }
+
+    public static ArrayList<ArrayList<Integer>> quickSortOperation(ArrayList<Integer> list){
+        //set the pivot to last element in array
+        ArrayList<ArrayList<Integer>> sorted = new ArrayList<>();
+        ArrayList<Integer> bigger = new ArrayList<>();
+        /*if (list.size() == 1){
+            sorted.add(list);
+            return list;
+        }
+
+         */
+
+        int pivot = list.get(list.size() - 1);
+        for(int i = 0; i < list.size(); i++){
+            if (list.get(i) > pivot){
+                bigger.add(list.get(i));
+                list.remove(i);
+                i=-1;
+            }
+
+        }
+
+
+
+        sorted.add(list);
+
+        sorted.add(bigger);
+
+        return sorted;
+
+
+    }
+
+    public static int[] bubbleSort(int[] array){
+        //bring counter into scope
+        int j;
+        //outer loop making sure we don't compare to elements already in the right place
+        for (j = array.length; j > 0; j--){
+            //iterate over array
+            for (int i = 0; i < j; i++) {
+                //check to make sure we don't get oob errors
+                if(i == array.length-1){
+                    break;
+                }
+                //compare and swap if required
+                if (array[i] > array[i + 1]) {
+                    swapElements(array, i, i + 1);
+                }
+
+            }
+        }
+
+        return array;
+
+
+    }
+
+    public static int[] swapElements(int[] array, int one, int two){
+        int helper = array[one];
+        array[one] = array[two];
+        array[two] = helper;
+        return array;
+    }
+
+
+
+
+
+}
